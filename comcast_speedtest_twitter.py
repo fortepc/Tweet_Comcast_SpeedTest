@@ -69,10 +69,10 @@ def test():
                         pass
 
         # send tweet if download speed is very slow
-        elif eval(d)<100:
+        elif eval(d)<50:
                 print("Trying to tweet message. Please wait ...")
                 try:
-                        tweet="Hey @ConcastCares why is my internet speed only " + str(int(eval(d))) + "down\\" + str(int(eval(u))) + "up when I pay for 300down\\20up in Peru IN? @Comcast @xfinity #comcast #speedtest"
+                        tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down\\" + str(int(eval(u))) + "up when I pay for 300down\\20up in Peru IN? @ComcastCares @xfinity #comcast #speedtest"
                         twitter.update_status(status=tweet)
                 except Exception as e:
                         print(str(e))
