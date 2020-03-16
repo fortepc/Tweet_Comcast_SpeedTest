@@ -22,14 +22,14 @@ from twython import Twython
 def test():
 
         #run speedtest-cli
-        print 'Running speed test. Please wait ...'
+        print ('Running speed test. Please wait ...')
 
         a = os.popen("speedtest-cli --simple").read()
 
-        print 'Speed test done.'
+        print ('Speed test done.')
 
         lines = a.split('\n')
-        print a
+        print(a)
         ts = time.time()
         date =datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
@@ -42,7 +42,7 @@ def test():
                 p = lines[0][6:11]
                 d = lines[1][10:14]
                 u = lines[2][8:12]
-        print date,p, d, u
+        print(date,p, d, u)
 
         #save the data to file for local network plotting
         USER_DATA_FILE_PARH="/path/to/data.csv"
@@ -63,22 +63,22 @@ def test():
         #try to tweet if speedtest couldn't connect.
         if "Cannot" in a:
                 try:
-                        tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for 75down\\10up in Lake Worth FL? #comcastoutage #comcast"
+                        tweet="Hey @Comcast @ComcastCares why is my internet down? I pay for 300down\\20up in Peru IN? #comcastoutage #comcast"
                         twitter.update_status(status=tweet)
                 except:
                         pass
 
         # send tweet if download speed is very slow
-        elif eval(d)<50:
-                print "Trying to tweet message. Please wait ..."
+        elif eval(d)<100:
+                print("Trying to tweet message. Please wait ...")
                 try:
-                        tweet="Hey @Comcast why is my internet speed " + str(int(eval(d))) + "down\\" + str(int(eval(u))) + "up when I pay for 75down\\10up in Lake Worth FL? @ComcastCares @xfinity #comcast #speedtest"
+                        tweet="Hey @ConcastCares why is my internet speed only " + str(int(eval(d))) + "down\\" + str(int(eval(u))) + "up when I pay for 300down\\20up in Peru IN? @Comcast @xfinity #comcast #speedtest"
                         twitter.update_status(status=tweet)
-                except Exception,e:
-                        print str(e)
+                except Exception as e:
+                        print(str(e))
                         pass
         return
 
 if __name__ == '__main__':
         test()
-        print 'Task completed'
+        print('Task completed')
